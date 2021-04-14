@@ -5,7 +5,7 @@
 }
 */
 
-*:not(.lookup, #city, .notification-bar .text, .notification-bar .title) {
+*:not(.lookup, i, #city, .notification-bar .text, .notification-bar .title) {
     overflow: hidden;
     text-shadow: 2px 1.5px 2px #e1e4eb;
 }
@@ -45,13 +45,17 @@
     font-size: 1rem;
 }
 
-.searchbar > .lookup {
-    background-image: linear-gradient(135deg, #b8c6db, #ffffff);
+.searchbar > i {
+    /*background: linear-gradient(135deg, #b8c6db, #ffffff); */
     font-size: 1.1em;
+    margin-left: .5em;
 }
 
 .searchbar > .lookup:hover {
-    background-image: linear-gradient(135deg, #91A6FFcc, #b8c6db);
+    /*background: linear-gradient(135deg, #91A6FFcc, #b8c6db);*/
+    color: rgb(40, 224, 138);
+    box-shadow: 0px 0px 16px 16px rgba(31, 175, 219, 0.65);
+    border-radius: 10px;
     cursor: pointer;
     font-size: 1.1em;
 }
@@ -177,6 +181,11 @@
     font-weight: 600;
     letter-spacing: 330%;
     text-shadow: none;
+}
+
+.notification-bar .title i {
+    font-size: .6em;
+    color:rgba(0, 0, 0, .8)
 }
 
 .notification-bar .text {

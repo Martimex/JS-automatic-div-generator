@@ -75,7 +75,7 @@ function last() {
 
         let chosencity = queryArray[i];
         let url = `http://api.openweathermap.org/data/2.5/weather?q=${chosencity}&units=metric&APPID=d10be5670d0e6307831a8eccb6cee0ef`;
-        console.log(queryArray);
+        //console.log(queryArray);
 
         fetch(url)
             .then(res => res.json())
@@ -109,7 +109,7 @@ function last() {
                 for(code in hoverEffectObj) {
                     if(iconCode == code) {
                         result = `${hoverEffectObj[code]}`;
-                        console.log('DONE');
+                        //console.log('DONE');
                         console.log(`%c ${result}`, 'color: red;')
                         main.addEventListener(`mouseenter`, () => {
                             main.style.background = result;
@@ -166,9 +166,11 @@ function checkCity() {
                     if(input_value === cname) {
                         console.log('Visibility change');
                         let notify = document.querySelector('.notification-bar');
+                        let icon = document.querySelector('.notification-bar .title i')
                             notify.style = 'visibility: visible;';
                             if(notify.classList.contains('danger')) {
                                 notify.classList.replace('danger', 'warning');
+                                icon.classList.replace('icon-cancel', 'icon-attention');
                             }
                         document.querySelector('.notification-bar .text').textContent = `This city is already on the list!`;
                         
@@ -219,9 +221,11 @@ function checkCity() {
         .catch(err => {
             //console.log(err);
             let notify = document.querySelector('.notification-bar');
+            let icon = document.querySelector('.notification-bar .title i');
                 notify.style = 'visibility: visible;';
                     if(notify.classList.contains('warning')) {
                         notify.classList.replace('warning', 'danger');
+                        icon.classList.replace('icon-attention', 'icon-cancel');
                     }
             document.querySelector('.notification-bar .text').textContent = `This city does not exist!`;
 
@@ -279,13 +283,13 @@ function randomize(queryArray) {
             obj[i] = true;
         }
 
-        console.log(queryArray.length);
+        //console.log(queryArray.length);
         
         if(Object.keys(obj).length !== limit) {fulfillArray(queryArray);}
 
         else {return queryArray;}
     }
-    console.log(queryArray);
+    //console.log(queryArray);
     return queryArray;
 }
 
