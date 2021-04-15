@@ -1,12 +1,28 @@
-anime({
-    targets: ['.searchbar label', '#city', '.lookup'],
-    duration: 3000,
-    translateY: '4%',
-    opacity: [0.2, 1],
-    delay: anime.stagger(500),
-    autoplay: true,
-    loop: false,
-})
+
+
+let fadeIn = anime.timeline({
+    duration: 2200,
+    
+});
+
+    fadeIn
+        .add({
+        targets: ['.searchbar label', '#city', '.lookup'],
+        translateY: '4%',
+        opacity: [0.2, 1],
+        delay: anime.stagger(500),
+        autoplay: true,
+        loop: false,
+    })
+        .add({
+        targets: ['.update-time', '.date', '.time'],
+        translateY: '7%',
+
+        opacity: [0.1, 1],
+        autoplay: true,
+        loop: false,
+    });
+
 
  anime({
     targets: '.lookup',

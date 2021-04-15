@@ -1,5 +1,7 @@
 //const cities1 = ['Moscow', 'Kraków', 'Suwałki', 'Warsaw', 'Paris', 'Johannesburg', 'Dehli', 'Los Angeles', 'Sao Paulo', 'Montevideo'];
 
+console.log(Date.now());
+
 const cities = ['Moscow', 'Kraków', 'Montevideo', 'Honolulu', 'Vien', 'Dehli'];
 let queryArray = new Array();
 const weatherIconCodes = ['11d', '09d', '10d', '13d', '50d', '01d', '01n', '02d', '02n', '03d', '03n', '04d', '04n'];
@@ -124,6 +126,35 @@ function last() {
         .catch(err => { throw err});
 
     }
+
+    // Here will be a function or code that will calculate current date (with hours), so
+    // at the end we get the last update static timeframe
+
+    try {
+        let today = new Date();
+
+        let dateArr = [`${today.getFullYear()}`, `${today.getMonth()+1}`, `${today.getDate()}`,
+        `${today.getHours()}`, `${today.getMinutes()}`, `${today.getSeconds()}`];
+
+        let finalArr = [];
+
+        dateArr.forEach(info => {
+            info = parseInt(info);
+            console.log(typeof(info));
+            if(info < 10) {console.log('ok'); finalArr.push(`0${info}`) ;}
+            else finalArr.push(info);
+        })
+
+        let date = `${finalArr[0]} - ${finalArr[1]} - ${finalArr[2]}`;
+        let time = `${finalArr[3]} : ${finalArr[4]} : ${finalArr[5]}`;
+
+        document.querySelector('.update-time .date').textContent = date;
+        document.querySelector('.update-time .time').textContent = time;
+
+    } catch (error) {
+        console.log(error);
+    }
+
 }
 
 first();
