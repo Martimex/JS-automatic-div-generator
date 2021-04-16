@@ -28,7 +28,7 @@ const capitalCities = [
     `Algiers`,	
     `Amman`,
     `Amsterdam`,
-    //`Andorra la Vella`,
+    `Andorra la Vella`,
     `Ankara`,
     `Antananarivo`,
     `Apia`,

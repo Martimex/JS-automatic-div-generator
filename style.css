@@ -5,7 +5,11 @@
 }
 */
 
-*:not(.lookup, i, #city, .notification-bar .text, .notification-bar .title) {
+body {
+    margin-bottom: 0;
+}
+
+*:not(.lookup, i, #city, .notification-bar .text, .notification-bar .title, .flex-temp, .temp) {
     overflow: hidden;
     text-shadow: 2px 1.5px 2px #e1e4eb;
 }
@@ -39,9 +43,6 @@
 /* Search bar styling */ 
 
 .searchbar {
-    /*
-    position: relative;
-    left: 60%; */
     padding: 2em 1em;
 }
 
@@ -125,14 +126,22 @@
     cursor: pointer;
 }
 
-.weather-container:hover > .flex-temp,
-.weather-container:hover > .city
+.weather-container:hover .flex-temp,
+.weather-container:hover .city
+/*
+.weather-container:focus .flex-temp,
+.weather-container:focus .city,
+.weather-container:active .flex-temp,
+.weather-container:active .city */
 {
     
     transform: translateY(2.3em);
 }
 
-.weather-container:hover > .flex-weather 
+
+.weather-container:hover .flex-weather, 
+.weather-container:focus .flex-weather,
+.weather-container:active .flex-weather
 {
     transform: translateY(5em);
 }
@@ -249,22 +258,92 @@
 
 /* Mobile responsive design stuff */
 
-@media (orientation: landscape)  /* screen-reverse state */
+@media screen and (orientation: landscape) and (min-width: 500px) and (max-width: 1000px) /* screen-reverse state */
 {
-    *:not(.grid-box, .lookup, i, #city, .notification-bar .text, .notification-bar .title, .weather-container, .weather-container:hover){
+    *:not(.grid-box, .lookup, i, #city, .notification-bar .text, .notification-bar .title, .weather-container, .flex-temp, .temp, .flex-weather, .weather){
         overflow: auto; 
-     }
+    }
 
-     .weather-container{
-         width: 40%;
-         padding: .5em;
-         margin: .5em;
-     }
+    .grid-box {
+        grid-template-columns:  [first] 6fr [second] 5fr;
+    }
+
+    .update-time {
+        font-size: 1em;
+    }
+
+    .searchbar > label {
+        font-size: 1.3em;
+        font-weight: 650;
+    }
+
+    .update-time .date, .time {  
+        margin: .2em;
+    }
+
+    .weather-container{
+        width: 40%;
+        padding: .5em;
+        margin: .5em;
+        font-size: .75rem;
+    }
+
+    .notification-bar {
+        left: 95%;
+        bottom: 24%;
+        max-width: 32%;
+    }
+
+
+    /* trzeba jeszcze wdrożyć :hovery i niektóre animacje z nimi związanymi */
+
 }
 
-@media (orientation: portrait) /* normal state */
+@media screen and (orientation: portrait) /* normal state */
 {
-    *:not(.grid-box, .lookup, i, #city, .notification-bar .text, .notification-bar .title, .weather-container, .weather-container:hover){
+    *:not(.grid-box, .lookup, i, #city, .notification-bar .text, .notification-bar .title, .weather-container, .flex-temp, .temp, .flex-weather, .weather) {
         overflow: auto; 
-     }
+    }
+
+    .grid-box {
+        grid-template-columns: [first] 1fr;
+        grid-template-rows: [r1] 1fr [r2] 1fr;
+    }
+
+    .searchbar {
+        grid-row: 2;
+        padding: .15em .3em; margin: 0;
+        justify-self: center;
+    }
+
+    .searchbar > label {
+        font-size: 1.3em;
+    }
+
+    .update-time {
+        grid-row: 1;
+        padding:0; margin: .7em;
+        justify-self: center;
+    }
+
+    .update-time .date, .time {
+        font-size: .7em;
+    }
+
+    .weather-container  {
+        width: 80%;
+        padding: .5em;
+        margin: .5em;
+        font-size: .8rem;
+        row-gap: 1em;
+    }
+
+    .notification-bar {
+        position: absolute;
+        left: 0;
+        top: 0;
+        max-height: 6em;
+        max-width: 100%;
+    }
+
 }

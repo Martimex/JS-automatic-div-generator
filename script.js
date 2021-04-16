@@ -117,6 +117,13 @@ function last() {
                             main.style.background = result;
                         })
 
+                        if(window.matchMedia('only screen and (min-width: 300px)')) {
+    
+                            main.addEventListener('touchend', () => {
+                                main.style.background = result;
+                            })
+                        }
+
                     }
                 }
                     
